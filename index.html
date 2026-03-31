@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FairGraft – Umbrella, made fair.</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{teal:{50:'#e8f5f5',100:'#c5e8e7',300:'#7dcfce',400:'#5DB2B0',500:'#4a9e9c',600:'#3d8a88'},ink:'#0d1f1e',mid:'#1a3332'}}}}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif}
+.faq-answer{display:none}
+.faq-item.open .faq-answer{display:block}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-icon{transition:transform 0.2s}
+.roadmap-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,#5DB2B0,#e2e8e8);transform:translateX(-50%)}
+</style>
+</head>
+<body class="bg-white text-ink antialiased">
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <span class="font-black text-xl tracking-tight text-ink">FAIRGRAFT</span>
+    <!-- Desktop links -->
+    <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-400">
+      <a href="#for-who" onclick="event.preventDefault();goTo('for-who')" class="hover:text-ink transition-colors cursor-pointer">For agencies</a>
+      <a href="#for-contractors" onclick="event.preventDefault();goTo('for-contractors')" class="hover:text-ink transition-colors cursor-pointer">For contractors</a>
+      <a href="#how" onclick="event.preventDefault();goTo('how')" class="hover:text-ink transition-colors cursor-pointer">How it works</a>
+      <a href="#roadmap" onclick="event.preventDefault();goTo('roadmap')" class="hover:text-ink transition-colors cursor-pointer">Our journey</a>
+      <a href="#faq" onclick="event.preventDefault();goTo('faq')" class="hover:text-ink transition-colors cursor-pointer">FAQ</a>
+    </div>
+    <!-- Desktop CTA -->
+    <a href="#register" onclick="event.preventDefault();goTo('register')" class="hidden lg:block bg-teal-400 hover:bg-teal-500 text-white font-bold text-sm px-6 py-2.5 rounded-full transition-colors cursor-pointer">Register interest</a>
+    <!-- Burger button — mobile/tablet only -->
+    <button id="burger" onclick="toggleMenu()" class="lg:hidden flex flex-col gap-1.5 w-10 h-10 items-center justify-center rounded-xl hover:bg-gray-50 transition-colors">
+      <span id="b1" class="block w-5 h-0.5 bg-ink transition-all duration-300 origin-center"></span>
+      <span id="b2" class="block w-5 h-0.5 bg-ink transition-all duration-300"></span>
+      <span id="b3" class="block w-5 h-0.5 bg-ink transition-all duration-300 origin-center"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu" style="display:none;position:fixed;top:64px;left:0;right:0;z-index:40;background:white;border-bottom:1px solid #e5e7eb;box-shadow:0 4px 20px rgba(0,0,0,0.08)">
+  <div style="padding:1rem 1.5rem;display:flex;flex-direction:column;gap:4px">
+    <a href="#for-who" onclick="event.preventDefault();goTo('for-who');closeMenu()" style="padding:12px 16px;font-size:0.9rem;font-weight:600;color:#374151;border-radius:12px;text-decoration:none;display:block">For agencies</a>
+    <a href="#for-contractors" onclick="event.preventDefault();goTo('for-contractors');closeMenu()" style="padding:12px 16px;font-size:0.9rem;font-weight:600;color:#374151;border-radius:12px;text-decoration:none;display:block">For contractors</a>
+    <a href="#how" onclick="event.preventDefault();goTo('how');closeMenu()" style="padding:12px 16px;font-size:0.9rem;font-weight:600;color:#374151;border-radius:12px;text-decoration:none;display:block">How it works</a>
+    <a href="#roadmap" onclick="event.preventDefault();goTo('roadmap');closeMenu()" style="padding:12px 16px;font-size:0.9rem;font-weight:600;color:#374151;border-radius:12px;text-decoration:none;display:block">Our journey</a>
+    <a href="#faq" onclick="event.preventDefault();goTo('faq');closeMenu()" style="padding:12px 16px;font-size:0.9rem;font-weight:600;color:#374151;border-radius:12px;text-decoration:none;display:block">FAQ</a>
+    <div style="padding-top:12px;border-top:1px solid #f3f4f6;margin-top:4px">
+      <a href="#register" onclick="event.preventDefault();goTo('register');closeMenu()" style="display:block;text-align:center;background:#5DB2B0;color:white;font-weight:700;font-size:0.95rem;padding:14px;border-radius:50px;text-decoration:none">Register interest</a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="bg-white pt-32 pb-0 px-8 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-8 items-end">
+      <div class="pb-16">
+        <div class="flex flex-wrap gap-3 mb-8">
+          <div class="inline-flex items-center gap-2 bg-teal-50 border border-teal-100 text-teal-600 text-xs font-semibold px-4 py-2 rounded-full">
+            <span class="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse"></span>
+            Join the pilot — limited places
+          </div>
+          <div class="inline-flex items-center gap-2 bg-ink text-teal-300 text-xs font-semibold px-4 py-2 rounded-full">
+            🎁 First 2 weeks free for pilot partners
+          </div>
+        </div>
+        <h1 class="text-6xl md:text-7xl font-black text-ink leading-[1.0] mb-4">Umbrella,<br><span class="text-teal-400">made fair.</span></h1>
+        <p class="text-teal-500 font-semibold text-base mb-6">Made by contractors, for contractors.</p>
+        <p class="text-xl text-gray-400 leading-relaxed mb-8 max-w-md">Transparent payroll. No hidden fees. No unfair deductions.</p>
+        <div class="flex flex-wrap gap-4 mb-10">
+          <a href="#register" onclick="event.preventDefault();goTo('register')" class="bg-teal-400 hover:bg-teal-500 text-white font-bold px-8 py-4 rounded-full text-sm transition-colors cursor-pointer">Register interest</a>
+          <a href="#how" onclick="event.preventDefault();goTo('how')" class="bg-white hover:bg-gray-50 text-ink font-bold px-8 py-4 rounded-full text-sm border border-gray-200 transition-colors cursor-pointer">How it works</a>
+        </div>
+        <p class="text-gray-400 text-sm">£10 per payslip &nbsp;·&nbsp; Weekly, bi-weekly or monthly &nbsp;·&nbsp; No subscriptions</p>
+      </div>
+      <div class="relative flex justify-end items-end">
+        <div class="w-full aspect-[3/4] max-w-md bg-teal-50 rounded-t-3xl flex items-center justify-center border-2 border-dashed border-teal-200 overflow-hidden">
+          <div class="text-center text-teal-400/40 p-8">
+            <svg class="w-16 h-16 mx-auto mb-3" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <p class="text-sm font-medium">Add contractor hero image</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="bg-teal-50 border-y border-teal-100 py-4 px-8">
+  <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-10 gap-y-2">
+    <span class="text-teal-400 text-xs font-medium">Fully PAYE compliant</span>
+    <span class="text-teal-200 hidden md:block">·</span>
+    <span class="text-teal-400 text-xs font-medium">Powered by industry-leading payroll software</span>
+    <span class="text-teal-200 hidden md:block">·</span>
+    <span class="text-teal-400 text-xs font-medium">Audit-ready documentation</span>
+    <span class="text-teal-200 hidden md:block">·</span>
+    <span class="text-teal-400 text-xs font-medium">No percentage margins, ever</span>
+  </div>
+</div>
+
+<!-- FOUNDER STORY -->
+<section class="py-28 px-8 bg-white">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+    <div>
+      <p class="text-teal-500 font-semibold text-sm mb-6 tracking-wide uppercase">Why FairGraft exists</p>
+      <h2 class="text-5xl font-black text-ink leading-tight mb-8">I was a contractor.<br>I know what it feels like.</h2>
+      <div class="space-y-5 text-gray-500 text-lg leading-relaxed">
+        <p>When I worked as a contractor in civil engineering and construction, my umbrella company charged me £25 every single week just to process my pay. Over £1,300 a year. No explanation. No breakdown. Just gone.</p>
+        <p>Contractors across other sectors — healthcare, IT, logistics — tell the same story. Different industries, same unfair fees.</p>
+        <p>So I built an alternative.</p>
+      </div>
+      <div class="mt-10 flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-teal-400 flex items-center justify-center text-white font-black text-lg">F</div>
+        <div>
+          <p class="font-black text-ink">FairGraft Founder</p>
+          <p class="text-gray-400 text-sm">Former contractor</p>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+      <div class="bg-ink rounded-3xl p-8 col-span-2">
+        <p class="text-4xl font-black text-teal-400 mb-2">£1,300+</p>
+        <p class="text-white/50 text-sm">What a contractor paying £25/week loses annually to umbrella fees alone</p>
+      </div>
+              <div class="bg-teal-400 rounded-3xl p-8">
+        <p class="text-4xl font-black text-white mb-2">£10</p>
+        <p class="text-white/70 text-sm">FairGraft's fee per payslip. Flat. For everyone.</p>
+      </div>
+      <div class="bg-teal-50 rounded-3xl p-8">
+        <p class="text-4xl font-black text-ink mb-2">0%</p>
+        <p class="text-ink/50 text-sm">Percentage taken from your earnings. We mean zero.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="bg-ink py-24 px-8">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-5xl md:text-6xl font-black text-white leading-tight max-w-4xl mb-8">Pay should be simple.<br>Fees should be fair.<br><span class="text-teal-400">Nothing should be hidden.</span></h2>
+    <p class="text-white/40 text-xl max-w-2xl leading-relaxed">Most umbrella companies profit from complexity. FairGraft is built on the opposite principle — the simpler and clearer we make it, the better for everyone.</p>
+  </div>
+</section>
+
+<!-- FOR AGENCIES -->
+<section class="py-28 px-8 bg-white" id="for-who">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <div>
+      <span class="inline-block bg-teal-50 text-teal-600 text-xs font-bold px-3 py-1.5 rounded-full mb-6">For agencies</span>
+      <h2 class="text-5xl font-black text-ink leading-tight mb-6">Operations that actually run smoothly.</h2>
+      <p class="text-gray-400 text-lg leading-relaxed mb-8">A smoother umbrella experience reduces noise for ops teams and improves the contractor experience on assignment. Fairer fees mean contractors are more likely to stay — better for everyone.</p>
+      <ul class="space-y-4">
+        <li class="flex items-center gap-3 text-gray-600 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>Clear onboarding workflow for agency + contractor</li>
+        <li class="flex items-center gap-3 text-gray-600 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>Timesheet approval and status tracking</li>
+        <li class="flex items-center gap-3 text-gray-600 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>Predictable pay and bill process</li>
+        <li class="flex items-center gap-3 text-gray-600 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>Compliance reporting and operational oversight</li>
+        <li class="flex items-center gap-3 text-gray-600 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>Fewer pay queries via clearer itemised payslips</li>
+        <li class="flex items-center gap-3 text-gray-600 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>PAYE compliant with full audit-ready documentation</li>
+      </ul>
+    </div>
+    <div class="bg-teal-50 rounded-3xl aspect-square flex items-center justify-center border-2 border-dashed border-teal-200">
+      <div class="text-center text-teal-400/40 p-8">
+        <svg class="w-14 h-14 mx-auto mb-3" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        <p class="text-sm font-medium">Agency image</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR CONTRACTORS -->
+<section class="py-28 px-8 bg-gray-50" id="for-contractors">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <div class="order-2 md:order-1 bg-ink rounded-3xl aspect-square flex items-center justify-center">
+      <div class="text-center text-white/10 p-8">
+        <svg class="w-14 h-14 mx-auto mb-3" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <p class="text-sm font-medium">Contractor image</p>
+      </div>
+    </div>
+    <div class="order-1 md:order-2">
+      <span class="inline-block bg-ink text-teal-400 text-xs font-bold px-3 py-1.5 rounded-full mb-6">For contractors</span>
+      <h2 class="text-5xl font-black text-ink leading-tight mb-6">Your pay, finally explained.</h2>
+      <p class="text-gray-400 text-lg leading-relaxed mb-8">FairGraft makes pay easier to understand. What's statutory, what's employer cost, and what FairGraft charges — no surprises, ever.</p>
+      <ul class="space-y-4">
+        <li class="flex items-center gap-3 text-gray-600 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>Itemised payslips with transparent line items</li>
+        <li class="flex items-center gap-3 text-gray-600 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>Fixed fee, no percentage margin, ever</li>
+        <li class="flex items-center gap-3 text-gray-600 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>Know exactly what you're charged and why, every time</li>
+        <li class="flex items-center gap-3 text-gray-600 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>Support for pay questions and documentation</li>
+        <li class="flex items-center gap-3 text-gray-600 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>Pay processed once agency funds have cleared</li>
+        <li class="flex items-center gap-3 text-gray-600 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>PAYE employment with audit-ready documentation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="bg-white py-28 px-8" id="how">
+  <div class="max-w-7xl mx-auto">
+    <p class="text-teal-500 font-semibold text-sm mb-6 tracking-wide uppercase">The process</p>
+    <h2 class="text-5xl font-black text-ink leading-tight mb-4 max-w-xl">From onboarding to payday.</h2>
+    <p class="text-gray-400 text-xl mb-16 max-w-lg">Clear, trackable — every step of the way.</p>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="border-t-2 border-gray-200 pt-8 group hover:border-teal-400 transition-colors cursor-default">
+        <div class="text-gray-200 group-hover:text-teal-400 font-black text-5xl mb-6 transition-colors">01</div>
+        <h4 class="font-black text-xl text-ink mb-3">Agency registers</h4>
+        <p class="text-gray-400 text-sm leading-relaxed">We confirm pilot fit, pay frequency, volume, and funding terms.</p>
+      </div>
+      <div class="border-t-2 border-gray-200 pt-8 group hover:border-teal-400 transition-colors cursor-default">
+        <div class="text-gray-200 group-hover:text-teal-400 font-black text-5xl mb-6 transition-colors">02</div>
+        <h4 class="font-black text-xl text-ink mb-3">Contractors onboarded</h4>
+        <p class="text-gray-400 text-sm leading-relaxed">Required details, documents, and checks completed. Guided throughout.</p>
+      </div>
+      <div class="border-t-2 border-gray-200 pt-8 group hover:border-teal-400 transition-colors cursor-default">
+        <div class="text-gray-200 group-hover:text-teal-400 font-black text-5xl mb-6 transition-colors">03</div>
+        <h4 class="font-black text-xl text-ink mb-3">Timesheets submitted</h4>
+        <p class="text-gray-400 text-sm leading-relaxed">Contractors submit, agency reviews and approves.</p>
+      </div>
+      <div class="border-t-2 border-gray-200 pt-8 group hover:border-teal-400 transition-colors cursor-default">
+        <div class="text-gray-200 group-hover:text-teal-400 font-black text-5xl mb-6 transition-colors">04</div>
+        <h4 class="font-black text-xl text-ink mb-3">Invoices raised</h4>
+        <p class="text-gray-400 text-sm leading-relaxed">Generated automatically from approved timesheets.</p>
+      </div>
+      <div class="border-t-2 border-gray-200 pt-8 group hover:border-teal-400 transition-colors cursor-default">
+        <div class="text-gray-200 group-hover:text-teal-400 font-black text-5xl mb-6 transition-colors">05</div>
+        <h4 class="font-black text-xl text-ink mb-3">Funding clears</h4>
+        <p class="text-gray-400 text-sm leading-relaxed">We only pay once cleared funds are received.</p>
+      </div>
+      <div class="border-t-2 border-gray-200 pt-8 group hover:border-teal-400 transition-colors cursor-default">
+        <div class="text-gray-200 group-hover:text-teal-400 font-black text-5xl mb-6 transition-colors">06</div>
+        <h4 class="font-black text-xl text-ink mb-3">Payroll processed</h4>
+        <p class="text-gray-400 text-sm leading-relaxed">Payslips issued with full itemised breakdowns. Always clear.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="py-28 px-8 bg-gray-50" id="roadmap">
+  <div class="max-w-4xl mx-auto">
+    <p class="text-teal-500 font-semibold text-sm mb-6 tracking-wide uppercase">Our journey</p>
+    <h2 class="text-5xl font-black text-ink leading-tight mb-4">Where we are.<br>Where we're going.</h2>
+    <p class="text-gray-400 text-xl mb-16 max-w-lg">We believe in transparency — not just in payslips, but in how we're building FairGraft.</p>
+    <div class="space-y-0">
+      <div class="flex gap-8 items-start pb-12">
+        <div class="flex flex-col items-center flex-shrink-0">
+          <div class="w-10 h-10 rounded-full bg-teal-400 flex items-center justify-center flex-shrink-0 z-10">
+            <svg class="w-5 h-5 stroke-white" fill="none" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="w-0.5 flex-1 bg-teal-400 mt-2"></div>
+        </div>
+        <div class="pb-4">
+          <span class="inline-block bg-teal-50 text-teal-600 text-xs font-bold px-3 py-1 rounded-full mb-3">Now — Phase 1</span>
+          <h3 class="text-2xl font-black text-ink mb-2">Gathering interest</h3>
+          <p class="text-gray-400 leading-relaxed">We're talking to agencies and contractors across the UK to understand exactly what's broken — and confirm there's a better way. If you're reading this, you're part of this phase.</p>
+        </div>
+      </div>
+      <div class="flex gap-8 items-start pb-8">
+        <div class="flex flex-col items-center flex-shrink-0">
+          <div class="w-10 h-10 rounded-full bg-teal-100 border-2 border-teal-400 flex items-center justify-center flex-shrink-0 z-10">
+            <span class="text-teal-500 font-black text-sm">2</span>
+          </div>
+          <div class="w-0.5 flex-1 bg-gray-200 mt-2"></div>
+        </div>
+        <div class="pb-4">
+          <span class="inline-block bg-gray-100 text-gray-500 text-xs font-bold px-3 py-1 rounded-full mb-3">Next — Phase 2</span>
+          <h3 class="text-2xl font-black text-ink mb-2">Pilot with early partners</h3>
+          <p class="text-gray-400 leading-relaxed">A small group of agencies and their contractors will run through the full FairGraft process — onboarding, timesheets, payroll. Real pay. Real feedback. We'll fix what's not right.</p>
+        </div>
+      </div>
+
+      <!-- Commitment banner between Phase 2 and Phase 3 -->
+      <div style="padding:2rem 0 3rem 4.5rem">
+        <div style="background:#e8f5f5;border:1px solid #c5e8e7;border-radius:1rem;padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:0.75rem">
+          <svg style="width:1.25rem;height:1.25rem;color:#4a9e9c;flex-shrink:0;margin-top:0.125rem" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <p style="color:#3d8a88;font-size:0.875rem;line-height:1.6;margin:0"><strong>Our commitment:</strong> FairGraft will only begin trading once all required insurances, compliance certifications, and regulatory requirements are fully in place — before a single payment is processed.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-8 items-start pb-12">
+        <div class="flex flex-col items-center flex-shrink-0">
+          <div class="w-10 h-10 rounded-full bg-gray-100 border-2 border-gray-200 flex items-center justify-center flex-shrink-0 z-10">
+            <span class="text-gray-400 font-black text-sm">3</span>
+          </div>
+          <div class="w-0.5 flex-1 bg-gray-200 mt-2"></div>
+        </div>
+        <div class="pb-4">
+          <span class="inline-block bg-gray-100 text-gray-400 text-xs font-bold px-3 py-1 rounded-full mb-3">Phase 3</span>
+          <h3 class="text-2xl font-black text-ink mb-2">Full operations launch</h3>
+          <p class="text-gray-400 leading-relaxed">Open to all agencies and contractors. Full platform running, payroll processing at scale, with our competitive per-payslip fees firmly in place.</p>
+        </div>
+      </div>
+      <div class="flex gap-8 items-start pb-12">
+        <div class="flex flex-col items-center flex-shrink-0">
+          <div class="w-10 h-10 rounded-full bg-gray-100 border-2 border-gray-200 flex items-center justify-center flex-shrink-0 z-10">
+            <span class="text-gray-400 font-black text-sm">4</span>
+          </div>
+          <div class="w-0.5 flex-1 bg-gray-200 mt-2"></div>
+        </div>
+        <div class="pb-4">
+          <span class="inline-block bg-gray-100 text-gray-400 text-xs font-bold px-3 py-1 rounded-full mb-3">Phase 4</span>
+          <h3 class="text-2xl font-black text-ink mb-2">Full accreditation</h3>
+          <p class="text-gray-400 leading-relaxed">Achieving all relevant industry accreditations and compliance certifications to give agencies and contractors the highest level of assurance.</p>
+        </div>
+      </div>
+      <div class="flex gap-8 items-start">
+        <div class="flex flex-col items-center flex-shrink-0">
+          <div class="w-10 h-10 rounded-full bg-gray-100 border-2 border-gray-200 flex items-center justify-center flex-shrink-0 z-10">
+            <span class="text-gray-400 font-black text-sm">5</span>
+          </div>
+        </div>
+        <div>
+          <span class="inline-block bg-gray-100 text-gray-400 text-xs font-bold px-3 py-1 rounded-full mb-3">The mission</span>
+          <h3 class="text-2xl font-black text-ink mb-2">Eliminate overcharging umbrella companies</h3>
+          <p class="text-gray-400 leading-relaxed">By growing FairGraft, we make it harder for unfair umbrella companies to continue profiting from contractors. The more contractors choose fair — the less room there is for unfair.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="bg-white py-28 px-8">
+  <div class="max-w-7xl mx-auto">
+    <p class="text-teal-500 font-semibold text-sm mb-6 tracking-wide uppercase">Pricing</p>
+    <h2 class="text-5xl font-black text-ink leading-tight mb-4 max-w-2xl">£10 per payslip. That's it.</h2>
+    <p class="text-gray-400 text-xl mb-6 max-w-xl">No monthly subscriptions. No charges for weeks you don't work. One flat fee, regardless of how often you get paid.</p>
+    <div class="inline-flex items-center gap-3 bg-ink text-teal-300 text-sm font-semibold px-6 py-3 rounded-full mb-12">
+      🎁 <span>Pilot partners get their <strong class="text-white">first 2 weeks completely free</strong> — no payslip charges while you get set up</span>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 mb-12">
+      <div class="bg-gray-50 rounded-3xl p-8 border border-gray-100">
+        <div class="text-teal-400 font-black text-4xl mb-2">£10</div>
+        <div class="text-ink font-black text-xl mb-2">Per weekly payslip</div>
+        <p class="text-gray-400 text-sm leading-relaxed">For contractors paid every week. Only charged when a payslip is processed.</p>
+        <div class="mt-4 pt-4 border-t border-gray-200 text-xs text-gray-400">Equiv. ~£40/month for full-time weekly workers</div>
+      </div>
+      <div class="bg-ink rounded-3xl p-8">
+        <div class="text-teal-400 font-black text-4xl mb-2">£10</div>
+        <div class="text-white font-black text-xl mb-2">Per bi-weekly payslip</div>
+        <p class="text-white/50 text-sm leading-relaxed">For contractors paid every two weeks. Same flat fee, no exceptions.</p>
+        <div class="mt-4 pt-4 border-t border-white/10 text-xs text-white/30">Equiv. ~£20/month for full-time bi-weekly workers</div>
+      </div>
+      <div class="bg-teal-400 rounded-3xl p-8">
+        <div class="text-white font-black text-4xl mb-2">£10</div>
+        <div class="text-ink font-black text-xl mb-2">Per monthly payslip</div>
+        <p class="text-ink/60 text-sm leading-relaxed">For contractors paid monthly. One payslip, one flat charge.</p>
+        <div class="mt-4 pt-4 border-t border-ink/10 text-xs text-ink/40">£10/month — our most cost-effective option</div>
+      </div>
+    </div>
+    <div class="bg-teal-50 border border-teal-100 rounded-2xl p-6 max-w-2xl">
+      <p class="text-teal-700 text-sm leading-relaxed"><strong>Worked one week only?</strong> You pay £10. That's it. No monthly subscription, no minimum charge, no exit fees. FairGraft only charges when you actually get paid.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="bg-teal-400 py-24 px-8">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    <div>
+      <h2 class="text-5xl font-black text-white leading-tight mb-3">Ready to pay it fair?</h2>
+      <p class="text-white/70 text-lg">Join the pilot. Limited places. No commitment.</p>
+    </div>
+    <a href="#register" onclick="event.preventDefault();goTo('register')" class="bg-ink hover:bg-mid text-white font-black px-10 py-5 rounded-full text-sm transition-colors whitespace-nowrap flex-shrink-0 cursor-pointer">Register interest</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-28 px-8 bg-white" id="faq">
+  <div class="max-w-3xl mx-auto">
+    <p class="text-teal-500 font-semibold text-sm mb-6 tracking-wide uppercase">Got questions?</p>
+    <h2 class="text-5xl font-black text-ink leading-tight mb-16">Everything you need to know.</h2>
+    <div class="space-y-0" id="faq-list">
+      <div class="faq-item border-t border-gray-100 py-6 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between gap-4">
+          <h3 class="font-black text-lg text-ink">Why do I need an umbrella company?</h3>
+          <span class="faq-icon text-teal-400 text-2xl font-light flex-shrink-0">+</span>
+        </div>
+        <div class="faq-answer pt-4 text-gray-400 leading-relaxed text-sm">If you work as a contractor through an agency, HMRC typically requires your income to be processed through a PAYE-compliant structure. An umbrella company acts as your employer — processing your pay, handling tax, National Insurance, and statutory entitlements like holiday pay and sick pay. It protects both you and the agency from IR35 and other compliance risks.</div>
+      </div>
+      <div class="faq-item border-t border-gray-100 py-6 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between gap-4">
+          <h3 class="font-black text-lg text-ink">Why do umbrella companies charge a fee?</h3>
+          <span class="faq-icon text-teal-400 text-2xl font-light flex-shrink-0">+</span>
+        </div>
+        <div class="faq-answer pt-4 text-gray-400 leading-relaxed text-sm">Running a compliant payroll operation has real costs — software, accountancy, compliance, insurance, and people. A fee covers this. What isn't fair is when that fee is a percentage of your earnings, or when it's buried in a confusing payslip with no explanation. FairGraft charges a simple, flat fee — nothing more, nothing hidden.</div>
+      </div>
+      <div class="faq-item border-t border-gray-100 py-6 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between gap-4">
+          <h3 class="font-black text-lg text-ink">How is FairGraft different from other umbrella companies?</h3>
+          <span class="faq-icon text-teal-400 text-2xl font-light flex-shrink-0">+</span>
+        </div>
+        <div class="faq-answer pt-4 text-gray-400 leading-relaxed text-sm">Most umbrella companies either charge a percentage of your earnings (which means the more you earn, the more they take), or charge high weekly/monthly fixed fees — often £15–£30 per week. FairGraft charges from £6.50 per payslip, flat. No percentage. No surprises. And unlike most, we were built by someone who was a contractor first — we know exactly what bad looks like, because we lived it.</div>
+      </div>
+      <div class="faq-item border-t border-gray-100 py-6 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between gap-4">
+          <h3 class="font-black text-lg text-ink">What does the per-payslip fee actually cover?</h3>
+          <span class="faq-icon text-teal-400 text-2xl font-light flex-shrink-0">+</span>
+        </div>
+        <div class="faq-answer pt-4 text-gray-400 leading-relaxed text-sm">Everything. PAYE payroll processing, itemised payslip generation, employer NI handling, holiday pay administration, compliance documentation, and support for any pay queries. There are no add-ons, no tier upgrades, no surprise charges.</div>
+      </div>
+      <div class="faq-item border-t border-gray-100 py-6 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between gap-4">
+          <h3 class="font-black text-lg text-ink">Is FairGraft fully HMRC compliant?</h3>
+          <span class="faq-icon text-teal-400 text-2xl font-light flex-shrink-0">+</span>
+        </div>
+        <div class="faq-answer pt-4 text-gray-400 leading-relaxed text-sm">Yes. FairGraft is powered by Accentra's Primo Umbrella — payroll software specialists since 1979. Our payroll infrastructure is built on decades of PAYE compliance experience. All payslips are HMRC-compliant, and we provide full audit-ready documentation for agencies and contractors alike.</div>
+      </div>
+      <div class="faq-item border-t border-gray-100 py-6 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between gap-4">
+          <h3 class="font-black text-lg text-ink">We're an agency — how does FairGraft work for us?</h3>
+          <span class="faq-icon text-teal-400 text-2xl font-light flex-shrink-0">+</span>
+        </div>
+        <div class="faq-answer pt-4 text-gray-400 leading-relaxed text-sm">FairGraft gives you a clean, trackable workflow — onboarding, timesheet approval, invoicing, and payroll — all in one place. Fewer queries from contractors, predictable billing, and compliance documentation you can actually rely on. We only process pay once your funds have cleared, so there's no financial risk to you.</div>
+      </div>
+      <div class="faq-item border-t border-gray-100 py-6 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between gap-4">
+          <h3 class="font-black text-lg text-ink">What happens when I register interest?</h3>
+          <span class="faq-icon text-teal-400 text-2xl font-light flex-shrink-0">+</span>
+        </div>
+        <div class="faq-answer pt-4 text-gray-400 leading-relaxed text-sm">We'll reach out personally — no automated sales funnel, no pushy follow-ups. We want to understand your situation, answer any questions, and see if FairGraft is the right fit. There's no commitment to registering. It just gets the conversation started.</div>
+      </div>
+      <div class="faq-item border-t border-gray-100 py-6 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between gap-4">
+          <h3 class="font-black text-lg text-ink">Why might some agencies be hesitant to switch to FairGraft?</h3>
+          <span class="faq-icon text-teal-400 text-2xl font-light flex-shrink-0">+</span>
+        </div>
+        <div class="faq-answer pt-4 text-gray-400 leading-relaxed text-sm">
+          <p class="mb-3">It's a fair question and we'd rather be upfront about it. Some agencies have long-standing relationships with existing umbrella companies and may receive financial incentives — often called referral fees or margin-sharing arrangements — for directing contractors their way. Switching means giving those up.</p>
+          <p class="mb-3">Some larger agencies also require umbrella partners to hold FCSA accreditation, which requires two years of trading history. FairGraft is working towards full accreditation and will hold Professional Passport approval and all required insurances before processing a single payslip.</p>
+          <p>What we offer instead is something that actually benefits the agency long term — lower contractor fees mean fewer complaints, better retention, and a cleaner compliance position as new regulations make agencies jointly liable for their umbrella partners.</p>
+        </div>
+      </div>
+      <div class="faq-item border-t border-b border-gray-100 py-6 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between gap-4">
+          <h3 class="font-black text-lg text-ink">Will FairGraft's fees stay the same?</h3>
+          <span class="faq-icon text-teal-400 text-2xl font-light flex-shrink-0">+</span>
+        </div>
+        <div class="faq-answer pt-4 text-gray-400 leading-relaxed text-sm">Our pilot pricing is already among the lowest in the market — £10 per payslip, flat, for everyone. Early partners who register now are locking in this rate.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER -->
+<section class="bg-gray-50 py-28 px-8" id="register">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-20 items-start">
+      <div>
+        <p class="text-teal-500 font-semibold text-sm mb-6 tracking-wide uppercase">Join the pilot</p>
+        <h2 class="text-5xl font-black text-ink leading-tight mb-6">Register your interest.</h2>
+        <p class="text-gray-400 text-xl leading-relaxed mb-10">No commitment required. We'll reach out personally to see if FairGraft is the right fit for you.</p>
+        <div class="space-y-5 mb-12">
+          <div class="flex items-start gap-4"><span class="w-6 h-6 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 stroke-teal-500" fill="none" stroke-width="3" viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></span><span class="text-gray-600"><strong>First 2 weeks free</strong> — no payslip charges while you get set up</span></div>
+          <div class="flex items-start gap-4"><span class="w-6 h-6 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 stroke-teal-500" fill="none" stroke-width="3" viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></span><span class="text-gray-600">£10 per payslip flat after that — no surprises</span></div>
+          <div class="flex items-start gap-4"><span class="w-6 h-6 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 stroke-teal-500" fill="none" stroke-width="3" viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></span><span class="text-gray-600">Direct input into how we build the platform</span></div>
+          <div class="flex items-start gap-4"><span class="w-6 h-6 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 stroke-teal-500" fill="none" stroke-width="3" viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></span><span class="text-gray-600">Priority onboarding when we launch</span></div>
+          <div class="flex items-start gap-4"><span class="w-6 h-6 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 stroke-teal-500" fill="none" stroke-width="3" viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></span><span class="text-gray-600">A personal response — not an automated email</span></div>
+          <div class="flex items-start gap-4"><span class="w-6 h-6 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 stroke-teal-500" fill="none" stroke-width="3" viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></span><span class="text-gray-600">First to benefit when fees reduce as we grow</span></div>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-2xl p-6">
+          <p class="text-gray-400 text-sm leading-relaxed">FairGraft processes all payroll through industry-leading, fully HMRC-compliant payroll software — ensuring accuracy, transparency and audit-ready documentation every time.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
+        <h3 class="font-black text-xl text-ink mb-6">Get in touch</h3>
+        <div id="success-msg" class="hidden bg-teal-50 border border-teal-100 rounded-2xl p-8 text-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-teal-400 flex items-center justify-center mx-auto mb-4"><svg class="w-6 h-6 stroke-white" fill="none" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h3 class="font-black text-xl text-ink mb-2">Thank you!</h3>
+          <p class="text-gray-400 text-sm">We'll be in touch personally — usually within 1–2 working days.</p>
+        </div>
+        <div id="form-body" class="space-y-5">
+          <div>
+            <label class="block text-sm font-bold text-ink mb-2">I am a...</label>
+            <div class="grid grid-cols-2 gap-3">
+              <button id="role-agency" onclick="setRole('agency')" class="py-3.5 rounded-2xl border-2 border-teal-400 bg-teal-50 text-teal-600 font-black text-sm transition-all">Agency</button>
+              <button id="role-contractor" onclick="setRole('contractor')" class="py-3.5 rounded-2xl border-2 border-gray-100 text-gray-300 font-black text-sm transition-all hover:border-gray-200 hover:text-gray-400">Contractor</button>
+            </div>
+            <input type="hidden" id="role-val" value="agency">
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-ink mb-2">Full name *</label>
+            <input id="f-name" type="text" placeholder="Your full name" class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300">
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-ink mb-2">Email address *</label>
+            <input id="f-email" type="email" placeholder="your@email.com" class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300">
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-ink mb-2">Company / organisation</label>
+            <input id="f-company" type="text" placeholder="Company name (if applicable)" class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300">
+          </div>
+          <div id="agency-fields">
+            <label class="block text-sm font-bold text-ink mb-2">Approximate number of contractors</label>
+            <select id="f-size" class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors text-gray-400 bg-white">
+              <option value="">Select...</option>
+              <option>1–5</option><option>6–20</option><option>21–50</option><option>50+</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-ink mb-2">Anything you'd like us to know?</label>
+            <textarea id="f-notes" rows="3" placeholder="Questions, current setup, pain points..." class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300 resize-none"></textarea>
+          </div>
+          <button onclick="submitForm()" class="w-full bg-teal-400 hover:bg-teal-500 text-white font-black py-4 rounded-full transition-colors text-sm">Register interest</button>
+          <p class="text-xs text-gray-300 text-center">No commitment. We'll never share your details.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY MODAL -->
+<div id="privacy-modal" class="fixed inset-0 z-[100] hidden">
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="hidePrivacy()"></div>
+  <div class="absolute inset-4 md:inset-10 bg-white rounded-3xl overflow-hidden flex flex-col">
+    <div class="flex items-center justify-between px-8 py-5 border-b border-gray-100 flex-shrink-0">
+      <div class="flex items-center gap-3">
+        <span class="font-black text-lg text-ink">FAIRGRAFT</span>
+        <span class="text-gray-300">·</span>
+        <span class="text-gray-400 font-medium text-sm">Privacy Policy</span>
+      </div>
+      <button onclick="hidePrivacy()" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors text-gray-500 font-bold text-lg">×</button>
+    </div>
+    <div class="overflow-y-auto flex-1 px-8 py-8 max-w-3xl mx-auto w-full">
+      <p class="text-gray-400 text-sm mb-8">Last updated: January 2026</p>
+      <h2 class="text-2xl font-black text-ink mb-4">1. Who we are</h2>
+      <p class="text-gray-500 leading-relaxed mb-8">FairGraft is an umbrella company operated in the United Kingdom. For privacy queries: <a href="mailto:hello@fairgraft.co.uk" class="text-teal-500 hover:underline">hello@fairgraft.co.uk</a></p>
+      <h2 class="text-2xl font-black text-ink mb-4">2. What data we collect</h2>
+      <ul class="space-y-2 mb-8 text-gray-500">
+        <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0 mt-2"></span>Full name, address, date of birth and National Insurance number</li>
+        <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0 mt-2"></span>Contact details including email and phone number</li>
+        <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0 mt-2"></span>Bank account details for payroll purposes</li>
+        <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0 mt-2"></span>Employment and tax information including P45, P60 and payslip data</li>
+        <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0 mt-2"></span>Right to work documentation</li>
+        <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0 mt-2"></span>Interest registration data submitted through this website</li>
+      </ul>
+      <h2 class="text-2xl font-black text-ink mb-4">3. Your rights</h2>
+      <p class="text-gray-500 leading-relaxed mb-4">Under UK GDPR you have the right to access, correct, or erase your data, and to lodge a complaint with the ICO at ico.org.uk.</p>
+      <h2 class="text-2xl font-black text-ink mb-4">4. Contact us</h2>
+      <p class="text-gray-500 leading-relaxed mb-12"><a href="mailto:hello@fairgraft.co.uk" class="text-teal-500 hover:underline">hello@fairgraft.co.uk</a></p>
+      <div class="bg-teal-50 border border-teal-100 rounded-2xl p-6 mb-8">
+        <p class="text-teal-700 text-sm leading-relaxed"><strong>Note:</strong> FairGraft is currently in its pilot phase. This privacy policy will be reviewed and updated as our operations develop.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-ink py-16 px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-wrap items-start justify-between gap-10 mb-12">
+      <div>
+        <div class="text-white font-black text-lg mb-4">FAIRGRAFT</div>
+        <p class="text-white/30 text-sm max-w-xs leading-relaxed">Umbrella, made fair. Built by contractors, for contractors.</p>
+      </div>
+      <div class="grid grid-cols-2 gap-x-16 gap-y-3 text-sm text-white/30">
+        <a href="#for-who" onclick="event.preventDefault();goTo('for-who')" class="hover:text-teal-400 transition-colors cursor-pointer">For agencies</a>
+        <a href="#faq" onclick="event.preventDefault();goTo('faq')" class="hover:text-teal-400 transition-colors cursor-pointer">FAQ</a>
+        <a href="#for-contractors" onclick="event.preventDefault();goTo('for-contractors')" class="hover:text-teal-400 transition-colors cursor-pointer">For contractors</a>
+        <a href="#register" onclick="event.preventDefault();goTo('register')" class="hover:text-teal-400 transition-colors cursor-pointer">Register interest</a>
+        <a href="#how" onclick="event.preventDefault();goTo('how')" class="hover:text-teal-400 transition-colors cursor-pointer">How it works</a>
+        <a href="#roadmap" onclick="event.preventDefault();goTo('roadmap')" class="hover:text-teal-400 transition-colors cursor-pointer">Our journey</a>
+        <a href="contact.html" class="hover:text-teal-400 transition-colors">Contact</a>
+        <a href="privacy.html" class="hover:text-teal-400 transition-colors">Privacy policy</a>
+        <a href="terms.html" class="hover:text-teal-400 transition-colors">Terms & conditions</a>
+      </div>
+    </div>
+    <div class="border-t border-white/5 pt-8 flex flex-wrap items-center justify-between gap-4">
+      <p class="text-white/20 text-xs">© 2026 FairGraft. Made by contractors, for contractors.</p>
+      <p class="text-white/20 text-xs">Powered by industry-leading HMRC-compliant payroll software</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function setRole(r){
+  document.getElementById('role-val').value=r;
+  const a=document.getElementById('role-agency'),c=document.getElementById('role-contractor');
+  if(r==='agency'){
+    a.className='py-3.5 rounded-2xl border-2 border-teal-400 bg-teal-50 text-teal-600 font-black text-sm transition-all';
+    c.className='py-3.5 rounded-2xl border-2 border-gray-100 text-gray-300 font-black text-sm transition-all';
+    document.getElementById('agency-fields').style.display='block';
+  }else{
+    c.className='py-3.5 rounded-2xl border-2 border-teal-400 bg-teal-50 text-teal-600 font-black text-sm transition-all';
+    a.className='py-3.5 rounded-2xl border-2 border-gray-100 text-gray-300 font-black text-sm transition-all';
+    document.getElementById('agency-fields').style.display='none';
+  }
+}
+function submitForm(){
+  const name=document.getElementById('f-name').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  if(!name||!email){alert('Please enter your name and email.');return;}
+  document.getElementById('form-body').style.display='none';
+  document.getElementById('success-msg').classList.remove('hidden');
+}
+function goTo(id){
+  const el=document.getElementById(id);
+  if(!el)return;
+  window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-80,behavior:'smooth'});
+}
+function toggleMenu(){
+  const m=document.getElementById('mobile-menu');
+  m.style.display===('block')?closeMenu():openMenu();
+}
+function openMenu(){
+  document.getElementById('mobile-menu').style.display='block';
+  document.getElementById('b1').style.transform='rotate(45deg) translate(5px,5px)';
+  document.getElementById('b2').style.opacity='0';
+  document.getElementById('b3').style.transform='rotate(-45deg) translate(5px,-5px)';
+}
+function closeMenu(){
+  document.getElementById('mobile-menu').style.display='none';
+  ['b1','b2','b3'].forEach(id=>{document.getElementById(id).style.transform='none';document.getElementById(id).style.opacity='1';});
+}
+function showPrivacy(){document.getElementById('privacy-modal').classList.remove('hidden');document.body.style.overflow='hidden';}
+function hidePrivacy(){document.getElementById('privacy-modal').classList.add('hidden');document.body.style.overflow='';}
+function toggleFaq(el){
+  const isOpen=el.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)el.classList.add('open');
+}
+</script>
+</body>
+</html>
