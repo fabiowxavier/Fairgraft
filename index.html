@@ -25,7 +25,7 @@ body{font-family:'Inter',sans-serif}
 <!-- NAV -->
 <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur border-b border-gray-100">
   <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-   <a href="index.html"><img src="assets/images/logolong.png" alt="FairGraft" class="h-8 w-auto object-contain"></a>
+    <span class="font-black text-xl tracking-tight text-ink">FAIRGRAFT</span>
     <!-- Desktop links -->
     <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-400">
       <a href="#for-who" onclick="event.preventDefault();goTo('for-who')" class="hover:text-ink transition-colors cursor-pointer">For agencies</a>
@@ -83,10 +83,30 @@ body{font-family:'Inter',sans-serif}
         <p class="text-gray-400 text-sm">£10 per payslip &nbsp;·&nbsp; Weekly, bi-weekly or monthly &nbsp;·&nbsp; No subscriptions</p>
       </div>
       <div class="relative flex justify-end items-end">
-        <div class="w-full aspect-[3/4] max-w-md bg-teal-50 rounded-t-3xl flex items-center justify-center border-2 border-dashed border-teal-200 overflow-hidden">
-          <div class="text-center text-teal-400/40 p-8">
-            <svg class="w-16 h-16 mx-auto mb-3" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <p class="text-sm font-medium">Add contractor hero image</p>
+        <div class="w-full grid grid-cols-2 gap-2 rounded-3xl overflow-hidden">
+          <div class="relative overflow-hidden rounded-tl-3xl aspect-square">
+            <img src="assets/images/hero-construction.jpg" alt="Construction" class="w-full h-full object-cover">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+              <span class="text-white text-xs font-bold">Construction</span>
+            </div>
+          </div>
+          <div class="relative overflow-hidden rounded-tr-3xl aspect-square">
+            <img src="assets/images/hero-healthcare.jpg" alt="Healthcare" class="w-full h-full object-cover">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+              <span class="text-white text-xs font-bold">Healthcare</span>
+            </div>
+          </div>
+          <div class="relative overflow-hidden rounded-bl-3xl aspect-square">
+            <img src="assets/images/hero-it.jpg" alt="IT & Tech" class="w-full h-full object-cover">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+              <span class="text-white text-xs font-bold">IT & Tech</span>
+            </div>
+          </div>
+          <div class="relative overflow-hidden rounded-br-3xl aspect-square">
+            <img src="assets/images/hero-logistics.jpg" alt="Logistics" class="w-full h-full object-cover">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+              <span class="text-white text-xs font-bold">Logistics</span>
+            </div>
           </div>
         </div>
       </div>
