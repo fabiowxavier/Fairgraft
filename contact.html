@@ -69,14 +69,11 @@ body{font-family:'Inter',sans-serif}
 
     <!-- LEFT — contact info -->
     <div>
-      <!-- Email -->
       <div class="mb-10">
         <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Email us directly</p>
         <a href="mailto:hello@fairgraft.co.uk" class="text-2xl font-black text-teal-400 hover:text-teal-500 transition-colors">hello@fairgraft.co.uk</a>
         <p class="text-gray-400 text-sm mt-2">We respond personally - no automated replies.</p>
       </div>
-
-      <!-- Response time -->
       <div class="bg-teal-50 border border-teal-100 rounded-2xl p-6 mb-10">
         <div class="flex items-start gap-4">
           <div class="w-10 h-10 rounded-full bg-teal-400 flex items-center justify-center flex-shrink-0">
@@ -88,8 +85,6 @@ body{font-family:'Inter',sans-serif}
           </div>
         </div>
       </div>
-
-      <!-- Company details -->
       <div class="mb-10">
         <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Company details</p>
         <div class="space-y-3 text-sm text-gray-500">
@@ -116,8 +111,6 @@ body{font-family:'Inter',sans-serif}
           </div>
         </div>
       </div>
-
-      <!-- What to contact about -->
       <div>
         <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">What can we help with?</p>
         <div class="space-y-3">
@@ -126,16 +119,15 @@ body{font-family:'Inter',sans-serif}
           <div class="flex items-center gap-3 text-sm text-gray-600"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>Contractor pay and payslip questions</div>
           <div class="flex items-center gap-3 text-sm text-gray-600"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>Compliance and accreditation queries</div>
           <div class="flex items-center gap-3 text-sm text-gray-600"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>Press and partnership enquiries</div>
-          <div class="flex items-center gap-3 text-sm text-gray-600"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>Anything else — we're happy to chat</div>
+          <div class="flex items-center gap-3 text-sm text-gray-600"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>Anything else - we're happy to chat</div>
         </div>
       </div>
     </div>
 
-    <!-- RIGHT — contact form -->
+    <!-- RIGHT — contact form — ONLY THIS SECTION CHANGED -->
     <div class="bg-gray-50 rounded-3xl p-8 border border-gray-100">
       <h2 class="font-black text-2xl text-ink mb-2">Send us a message</h2>
       <p class="text-gray-400 text-sm mb-8">Fill in the form and we'll get back to you personally.</p>
-
       <div id="success-msg" class="hidden bg-teal-50 border border-teal-100 rounded-2xl p-8 text-center mb-6">
         <div class="w-12 h-12 rounded-full bg-teal-400 flex items-center justify-center mx-auto mb-4">
           <svg class="w-6 h-6 stroke-white" fill="none" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
@@ -143,25 +135,24 @@ body{font-family:'Inter',sans-serif}
         <h3 class="font-black text-xl text-ink mb-2">Message sent!</h3>
         <p class="text-gray-400 text-sm">We'll be in touch within 1–2 working days.</p>
       </div>
-
-      <div id="form-body" class="space-y-5">
+      <form id="form-body" class="space-y-5" action="https://formspree.io/f/xjgpqprw" method="POST">
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label class="block text-sm font-bold text-ink mb-2">First name *</label>
-            <input id="c-fname" type="text" placeholder="First name" class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300 bg-white">
+            <input id="c-fname" name="first_name" type="text" placeholder="First name" required class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300 bg-white">
           </div>
           <div>
             <label class="block text-sm font-bold text-ink mb-2">Last name *</label>
-            <input id="c-lname" type="text" placeholder="Last name" class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300 bg-white">
+            <input id="c-lname" name="last_name" type="text" placeholder="Last name" required class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300 bg-white">
           </div>
         </div>
         <div>
           <label class="block text-sm font-bold text-ink mb-2">Email address *</label>
-          <input id="c-email" type="email" placeholder="your@email.com" class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300 bg-white">
+          <input id="c-email" name="email" type="email" placeholder="your@email.com" required class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300 bg-white">
         </div>
         <div>
           <label class="block text-sm font-bold text-ink mb-2">I am a...</label>
-          <select id="c-type" class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors text-gray-500 bg-white">
+          <select id="c-type" name="type" class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors text-gray-500 bg-white">
             <option value="">Select...</option>
             <option>Agency / recruiter</option>
             <option>Contractor</option>
@@ -171,15 +162,15 @@ body{font-family:'Inter',sans-serif}
         </div>
         <div>
           <label class="block text-sm font-bold text-ink mb-2">Subject *</label>
-          <input id="c-subject" type="text" placeholder="What's this about?" class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300 bg-white">
+          <input id="c-subject" name="subject" type="text" placeholder="What's this about?" required class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300 bg-white">
         </div>
         <div>
           <label class="block text-sm font-bold text-ink mb-2">Message *</label>
-          <textarea id="c-message" rows="5" placeholder="Tell us what's on your mind..." class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300 resize-none bg-white"></textarea>
+          <textarea id="c-message" name="message" rows="5" placeholder="Tell us what's on your mind..." required class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300 resize-none bg-white"></textarea>
         </div>
-        <button onclick="submitContact()" class="w-full bg-teal-400 hover:bg-teal-500 text-white font-black py-4 rounded-full transition-colors text-sm">Send message</button>
+        <button type="submit" class="w-full bg-teal-400 hover:bg-teal-500 text-white font-black py-4 rounded-full transition-colors text-sm">Send message</button>
         <p class="text-xs text-gray-300 text-center">We'll never share your details with third parties.</p>
-      </div>
+      </form>
     </div>
 
   </div>
@@ -214,15 +205,6 @@ body{font-family:'Inter',sans-serif}
 </footer>
 
 <script>
-function submitContact(){
-  const fname=document.getElementById('c-fname').value.trim();
-  const email=document.getElementById('c-email').value.trim();
-  const subject=document.getElementById('c-subject').value.trim();
-  const message=document.getElementById('c-message').value.trim();
-  if(!fname||!email||!subject||!message){alert('Please fill in all required fields.');return;}
-  document.getElementById('form-body').style.display='none';
-  document.getElementById('success-msg').classList.remove('hidden');
-}
 function toggleMenu(){
   const m=document.getElementById('mobile-menu');
   m.style.display===('block')?closeMenu():openMenu();
