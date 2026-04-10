@@ -26,7 +26,6 @@ body{font-family:'Inter',sans-serif}
 <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur border-b border-gray-100">
   <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
     <a href="index.html"><img src="/assets/images/logolong.png" alt="FairGraft" class="h-10 w-auto object-contain"></a>
-    <!-- Desktop links -->
     <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-400">
       <a href="#for-who" onclick="event.preventDefault();goTo('for-who')" class="hover:text-ink transition-colors cursor-pointer">For agencies</a>
       <a href="#for-contractors" onclick="event.preventDefault();goTo('for-contractors')" class="hover:text-ink transition-colors cursor-pointer">For contractors</a>
@@ -34,9 +33,7 @@ body{font-family:'Inter',sans-serif}
       <a href="#roadmap" onclick="event.preventDefault();goTo('roadmap')" class="hover:text-ink transition-colors cursor-pointer">Our journey</a>
       <a href="#faq" onclick="event.preventDefault();goTo('faq')" class="hover:text-ink transition-colors cursor-pointer">FAQ</a>
     </div>
-    <!-- Desktop CTA -->
     <a href="#register" onclick="event.preventDefault();goTo('register')" class="hidden lg:block bg-teal-400 hover:bg-teal-500 text-white font-bold text-sm px-6 py-2.5 rounded-full transition-colors cursor-pointer">Register interest</a>
-    <!-- Burger button — mobile/tablet only -->
     <button id="burger" onclick="toggleMenu()" class="lg:hidden flex flex-col gap-1.5 w-10 h-10 items-center justify-center rounded-xl hover:bg-gray-50 transition-colors">
       <span id="b1" class="block w-5 h-0.5 bg-ink transition-all duration-300 origin-center"></span>
       <span id="b2" class="block w-5 h-0.5 bg-ink transition-all duration-300"></span>
@@ -151,7 +148,7 @@ body{font-family:'Inter',sans-serif}
         <p class="text-4xl font-black text-teal-400 mb-2">£1,000+</p>
         <p class="text-white/50 text-sm">What a contractor paying £25/week loses annually to umbrella fees alone</p>
       </div>
-              <div class="bg-teal-400 rounded-3xl p-8">
+      <div class="bg-teal-400 rounded-3xl p-8">
         <p class="text-4xl font-black text-white mb-2">£10</p>
         <p class="text-white/70 text-sm">FairGraft's fee per payslip. Flat. For everyone.</p>
       </div>
@@ -188,8 +185,8 @@ body{font-family:'Inter',sans-serif}
       </ul>
     </div>
     <div class="rounded-3xl aspect-square overflow-hidden">
-  <img src="assets/images/deal.JPG" alt="Agency partnership" class="w-full h-full object-cover">
-</div>
+      <img src="assets/images/deal.JPG" alt="Agency partnership" class="w-full h-full object-cover">
+    </div>
   </div>
 </section>
 
@@ -197,8 +194,8 @@ body{font-family:'Inter',sans-serif}
 <section class="py-28 px-8 bg-gray-50" id="for-contractors">
   <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
     <div class="order-2 md:order-1 rounded-3xl aspect-square overflow-hidden">
-  <img src="assets/images/contractores.JPG" alt="Contractor at work" class="w-full h-full object-cover">
-</div>
+      <img src="assets/images/contractores.JPG" alt="Contractor at work" class="w-full h-full object-cover">
+    </div>
     <div class="order-1 md:order-2">
       <span class="inline-block bg-ink text-teal-400 text-xs font-bold px-3 py-1.5 rounded-full mb-6">For contractors</span>
       <h2 class="text-5xl font-black text-ink leading-tight mb-6">Your pay, finally explained.</h2>
@@ -289,15 +286,12 @@ body{font-family:'Inter',sans-serif}
           <p class="text-gray-400 leading-relaxed">A small group of agencies and their contractors will run through the full FairGraft process - onboarding, timesheets, payroll. Real pay. Real feedback. We'll fix what's not right.</p>
         </div>
       </div>
-
-      <!-- Commitment banner between Phase 2 and Phase 3 -->
       <div style="padding:2rem 0 3rem 4.5rem">
         <div style="background:#e8f5f5;border:1px solid #c5e8e7;border-radius:1rem;padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:0.75rem">
           <svg style="width:1.25rem;height:1.25rem;color:#4a9e9c;flex-shrink:0;margin-top:0.125rem" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <p style="color:#3d8a88;font-size:0.875rem;line-height:1.6;margin:0"><strong>Our commitment:</strong> FairGraft will only begin trading once all required insurances, compliance certifications, and regulatory requirements are fully in place - before a single payment is processed.</p>
         </div>
       </div>
-
       <div class="flex gap-8 items-start pb-12">
         <div class="flex flex-col items-center flex-shrink-0">
           <div class="w-10 h-10 rounded-full bg-gray-100 border-2 border-gray-200 flex items-center justify-center flex-shrink-0 z-10">
@@ -490,41 +484,42 @@ body{font-family:'Inter',sans-serif}
           <h3 class="font-black text-xl text-ink mb-2">Thank you!</h3>
           <p class="text-gray-400 text-sm">We'll be in touch personally - usually within 1–2 working days.</p>
         </div>
-        <div id="form-body" class="space-y-5">
+        <!-- FORMSPREE FORM — only this section changed -->
+        <form id="form-body" class="space-y-5" action="https://formspree.io/f/xjgpqprw" method="POST">
           <div>
             <label class="block text-sm font-bold text-ink mb-2">I am a...</label>
             <div class="grid grid-cols-2 gap-3">
-              <button id="role-agency" onclick="setRole('agency')" class="py-3.5 rounded-2xl border-2 border-teal-400 bg-teal-50 text-teal-600 font-black text-sm transition-all">Agency</button>
-              <button id="role-contractor" onclick="setRole('contractor')" class="py-3.5 rounded-2xl border-2 border-gray-100 text-gray-300 font-black text-sm transition-all hover:border-gray-200 hover:text-gray-400">Contractor</button>
+              <button type="button" id="role-agency" onclick="setRole('agency')" class="py-3.5 rounded-2xl border-2 border-teal-400 bg-teal-50 text-teal-600 font-black text-sm transition-all">Agency</button>
+              <button type="button" id="role-contractor" onclick="setRole('contractor')" class="py-3.5 rounded-2xl border-2 border-gray-100 text-gray-300 font-black text-sm transition-all hover:border-gray-200 hover:text-gray-400">Contractor</button>
             </div>
-            <input type="hidden" id="role-val" value="agency">
+            <input type="hidden" id="role-val" name="role" value="agency">
           </div>
           <div>
             <label class="block text-sm font-bold text-ink mb-2">Full name *</label>
-            <input id="f-name" type="text" placeholder="Your full name" class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300">
+            <input id="f-name" name="name" type="text" placeholder="Your full name" required class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300">
           </div>
           <div>
             <label class="block text-sm font-bold text-ink mb-2">Email address *</label>
-            <input id="f-email" type="email" placeholder="your@email.com" class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300">
+            <input id="f-email" name="email" type="email" placeholder="your@email.com" required class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300">
           </div>
           <div>
             <label class="block text-sm font-bold text-ink mb-2">Company / organisation</label>
-            <input id="f-company" type="text" placeholder="Company name (if applicable)" class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300">
+            <input id="f-company" name="company" type="text" placeholder="Company name (if applicable)" class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300">
           </div>
           <div id="agency-fields">
             <label class="block text-sm font-bold text-ink mb-2">Approximate number of contractors</label>
-            <select id="f-size" class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors text-gray-400 bg-white">
+            <select id="f-size" name="contractors" class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors text-gray-400 bg-white">
               <option value="">Select...</option>
               <option>1–5</option><option>6–20</option><option>21–50</option><option>50+</option>
             </select>
           </div>
           <div>
             <label class="block text-sm font-bold text-ink mb-2">Anything you'd like us to know?</label>
-            <textarea id="f-notes" rows="3" placeholder="Questions, current setup, pain points..." class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300 resize-none"></textarea>
+            <textarea id="f-notes" name="message" rows="3" placeholder="Questions, current setup, pain points..." class="w-full border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-teal-400 transition-colors placeholder-gray-300 resize-none"></textarea>
           </div>
-          <button onclick="submitForm()" class="w-full bg-teal-400 hover:bg-teal-500 text-white font-black py-4 rounded-full transition-colors text-sm">Register interest</button>
+          <button type="submit" class="w-full bg-teal-400 hover:bg-teal-500 text-white font-black py-4 rounded-full transition-colors text-sm">Register interest</button>
           <p class="text-xs text-gray-300 text-center">No commitment. We'll never share your details.</p>
-        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -571,7 +566,7 @@ body{font-family:'Inter',sans-serif}
   <div class="max-w-7xl mx-auto">
     <div class="flex flex-wrap items-start justify-between gap-10 mb-12">
       <div>
-        <a href="index.html"><img src="/assets/images/logo.png" alt="FairGraft" class="h-12 w-auto object-contain"></a>
+              <a href="index.html"><img src="/assets/images/logo.png" alt="FairGraft" class="h-12 w-auto object-contain"></a>
         <p class="text-white/30 text-sm max-w-xs leading-relaxed">Umbrella, made fair. Built by contractors, for contractors.</p>
       </div>
       <div class="grid grid-cols-2 gap-x-16 gap-y-3 text-sm text-white/30">
@@ -606,13 +601,6 @@ function setRole(r){
     a.className='py-3.5 rounded-2xl border-2 border-gray-100 text-gray-300 font-black text-sm transition-all';
     document.getElementById('agency-fields').style.display='none';
   }
-}
-function submitForm(){
-  const name=document.getElementById('f-name').value.trim();
-  const email=document.getElementById('f-email').value.trim();
-  if(!name||!email){alert('Please enter your name and email.');return;}
-  document.getElementById('form-body').style.display='none';
-  document.getElementById('success-msg').classList.remove('hidden');
 }
 function goTo(id){
   const el=document.getElementById(id);
